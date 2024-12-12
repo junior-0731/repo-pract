@@ -1,3 +1,4 @@
+
 def exeption_operation(funct):
     def wraper_operation(*args,**kwargs):
         try:
@@ -7,11 +8,53 @@ def exeption_operation(funct):
         except Exception as e:
             return "Error inesperado: ",e
     return wraper_operation
-@exeption_operation
-def suma(a:int,b:int):
-    return a + b
-def multiplicacion(a:int,b:int):
-    return a * b
 
-print(suma("5",20))
-print(multiplicacion(5,20))
+print("Calculadora")
+
+#solicitar numeros
+def solicitar_numeros():
+    print("Ingresa los dos digitos \n")
+    numeros=[]
+    for i in range(2):
+        numero = int(input(f"Ingresa el numero {i+1}: "))
+        numeros.append(numero)
+    return numeros
+#menu
+def menu():
+    listaNumeros = solicitar_numeros()
+    n1 = listaNumeros[0]
+    n2 = listaNumeros[1]
+    o= input("""Que deseas hacer
+        1. sumar
+        2. multiplicar
+        3. Restar
+        4. Dividir\n""")
+    if o =="3":
+        print(restar(n1,n2))
+    elif o == "2":
+        print(multiplicar(n1,n2))
+    elif o = "1":
+        print(suma(n1,n2))
+    elif o = "4":
+        print(division(n1,n2)
+             
+   
+@exeption_operation
+#funcion multiplicar
+def multiplicar(n1,n2):
+    return n1 * n2
+@exeption_operation
+# funcion restar
+def restar(n1,n2):
+    return n1-n2
+@exeption_operation
+#funcion suma
+def suma(n1,n2):
+    return a + b
+@exeption_operation
+#funcion division
+def division(n1,n2):
+    return a / b
+menu()
+
+
