@@ -29,32 +29,29 @@ def menu():
         2. multiplicar
         3. Restar
         4. Dividir\n""")
-    if o =="3":
-        print(restar(n1,n2))
+    if o =="1":
+        print(suma(n1,n2))
     elif o == "2":
         print(multiplicar(n1,n2))
-    elif o = "1":
-        print(suma(n1,n2))
-    elif o = "4":
-        print(division(n1,n2)
-             
-   
-@exeption_operation
+    elif o == "3":
+        print(restar(n1,n2))
+    elif o == "4":
+        print(division(n1,n2))
+    
 #funcion multiplicar
 def multiplicar(n1,n2):
     return n1 * n2
-@exeption_operation
 # funcion restar
 def restar(n1,n2):
     return n1-n2
-@exeption_operation
 #funcion suma
 def suma(n1,n2):
-    return a + b
-@exeption_operation
+    return  n1+ n2
+
 #funcion division
 def division(n1,n2):
-    return a / b
+    return n1 / n2
+
 menu()
 
 
