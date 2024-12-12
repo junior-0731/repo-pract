@@ -8,14 +8,7 @@ def solicitar_numeros():
         numero = int(input(f"Ingresa el numero {i+1}: "))
         numeros.append(numero)
     return numeros
-        
-    
-    
-#almacenando numeros
-
-
 #menu
-
 def menu():
     listaNumeros = solicitar_numeros()
     n1 = listaNumeros[0]
@@ -29,18 +22,13 @@ def menu():
         print(restar(n1,n2))
     elif o == "2":
         print(multiplicar(n1,n2))
-        
-    
 
-
-#funcion restar
+#funcion multiplicar
 def multiplicar(n1,n2):
     return n1 * n2
 
 # funcion restar
 def restar(n1,n2):
     return n1-n2
-
-
 menu()
 
