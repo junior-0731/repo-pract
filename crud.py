@@ -30,7 +30,34 @@ def solicitar_datos():
     edad= input("Ingresa la edad: ")
     create_students(lista,id,nombre,edad) # llamar la funcion create_students que almacena la informacion del estudiante en el diccionario
     
+def opciones_buscar():
+    opc_buscar=input("""Desea buscar Por
+                    1. id 
+                    2. Nombre
+                    3 Edad""")
+    while True:
+        if opc_buscar not in ["1","2", "3"]:
+            print("Error, digita una opcion de buscar correcta")
+        else:
+            break
+    if opc_buscar == "1":
+        while True: # control de excepciones para el id
+            id=input("Ingresa el id: ")
+            if id not in recopilador_id():
+                print("ese id no ha sido ingresado")
+            else:
+                break
+        print(buscar_estudiante(lista,id))
+    elif opc_buscar =="2":
+        nombre=input("Ingresa el nombre: ")
+        print(buscar_estudiante(lista,nombre,dato="nombre"))
+    elif opc_buscar =="3":
+        edad=input("Ingresa la edad: ")
+        print(buscar_estudiante(lista,edad,dato="edad"))
         
+        
+            
+
     
 #Agregar estudiante
 def create_students(lista:list,id:str,nombre:str,edad:str):
@@ -45,7 +72,7 @@ def create_students(lista:list,id:str,nombre:str,edad:str):
         edad (str): Edad del estudiante.
 
     Returns:
-        None: Esta función no retorna un valor, solo modifica la lista proporcionada.
+        List: Esta funcion retorna la lista que modifico
     """
     student = {
         "id":id,
@@ -61,6 +88,7 @@ def recopilador_id(): #simplemente se crea una lista para llenarla de los ids re
     for i in lista: # for que recorre la lista de diccionarios
         ides.append(i["id"])  # agregar el id a la lista ides
     return ides # retornar lista de ides
+        
 
 def eliminar(): # funcion eliminar que recibe como parametro el id del estudiante
     while True: # control de excepciones para el id
@@ -74,7 +102,7 @@ def eliminar(): # funcion eliminar que recibe como parametro el id del estudiant
     lista.pop(posicion) # y se elimina esa posicion de la lista de diccionarios
     print("Nueva lista\n")
     return lista #retornar lista con el diccionario ya eliminado
-
+#Buscar estudiantes
 def actualizar():
     while True: # control de excepciones para el id
         id_actualizar = input("ingrese el id del estudiante que desea actualizar: ")
@@ -95,22 +123,59 @@ def actualizar():
                 i["edad"] = edad # se actualiza la edad del estudiante
     print("Nueva lista\n")
     return lista #retornar lista con el diccionario ya actualizado
+def buscar_estudiante(estudiantes:list,id:str = None,nombre:str = None,edad:str = None,dato:str = "id"):
+    """
+    Permite buscar un estudiante en especifico o varios estudiantes que tengan datos similares.
 
+    Args:
+        estudiante (list): La lista donde se quiere buscar a el estudiante. 
+        id (str): Identificador único del estudiante.
+        nombre (str): Nombre del estudiante.
+        edad (str): Edad del estudiante.
+        dato (str): El dato del estudiante o estudiantes que se quiere buscar, por defecto es el id.
 
+    Returns:
+        dic: En caso de que encuetre una unica coincidencia debuelve un diccionario que representa los datos del estudiante.
+        list: En caso de que encuentre multiples coincidencisa debuelve una lista que diccionarios que representan los datos de los estudiantes.
+        str: En caso de que no encuetre ninguna coincidencia debuelve un mensaje.
+
+    """
+    lista_estudiantes = [] # Aqui se guardaran todos los estudiantes que coincidan
+    contador_estudiantes = 0 # Cuenta el numero de estudiantes que coinciden
+    for estudiante in estudiantes: # Itera la lista de estudiantes 
+        if estudiante[dato] == id or estudiante[dato] == nombre or estudiante[dato] == edad: 
+            """ 
+            Si encuentra un estudiante que coincida le suma 1 al contador y lo agrega a la lista de estudianes que coinciden
+            """
+            contador_estudiantes += 1
+            if contador_estudiantes >= 1:
+                lista_estudiantes.append(estudiante)
+    
+    if contador_estudiantes == 0: #Si no hay estudiantes que conincidan retorna un error
+            return "Error: no hay estudiantes que coincidan"
+    elif contador_estudiantes > 1: #Si hay mas de un estudiante que coincida 
+        return lista_estudiantes
+    
+    return lista_estudiantes[0]
+ 
 def menu(): # funcion menu, que se encarga de llamar las respectivas funcionees
-    while True:
-        opcion=seleccion()
-        if opcion == "1":
-            solicitar_datos()
-        elif opcion =="2":
-            print(eliminar())
-        elif opcion == "3":
-            print(actualizar())
-        else:
-            print("Saliendo del programa...")
-            time.sleep(2)
-            break
+    opcion=seleccion()
+    if opcion == "1":
+        solicitar_datos()
+        menu()
+    elif opcion =="2":
+        print(eliminar())
+        menu()
+    elif opcion == "3":
+        print(actualizar())
+        menu()
+    elif opcion =="4":
+        opciones_buscar()
+        menu()
+    else:
+        print("Saliendo del programa...")
+        time.sleep(2)
 menu()
 print("--- FIN DEL PROGRAMA ---")
         
-        
+
