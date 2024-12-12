@@ -1,3 +1,7 @@
+
+# id,nombre, edad
+# lista, diccionario, id
+=======
 lista=[]
 
 
@@ -82,6 +86,3 @@ def menu(): # funcion menu, que se encarga de llamar las respectivas funcionees
 menu()
         
         
-        
-
-
