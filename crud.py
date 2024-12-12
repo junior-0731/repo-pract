@@ -20,7 +20,3 @@ def create_students(lista:list,id:str,nombre:str,edad:str):
     }
     lista.append(student)
 
-estudiantes = []
-
-create_students(estudiantes,"1","Edier","12")
-print(estudiantes)
