@@ -1,7 +1,7 @@
 
 # id,nombre, edad
 # lista, diccionario, id
-=======
+
 lista=[]
 
 
