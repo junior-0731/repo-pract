@@ -30,7 +30,34 @@ def solicitar_datos():
     edad= input("Ingresa la edad: ")
     create_students(lista,id,nombre,edad) # llamar la funcion create_students que almacena la informacion del estudiante en el diccionario
     
+def opciones_buscar():
+    opc_buscar=input("""Desea buscar Por
+                    1. id 
+                    2. Nombre
+                    3 Edad""")
+    while True:
+        if opc_buscar not in ["1","2", "3"]:
+            print("Error, digita una opcion de buscar correcta")
+        else:
+            break
+    if opc_buscar == "1":
+        while True: # control de excepciones para el id
+            id=input("Ingresa el id: ")
+            if id not in recopilador_id():
+                print("ese id no ha sido ingresado")
+            else:
+                break
+        print(buscar_estudiante(lista,id))
+    elif opc_buscar =="2":
+        nombre=input("Ingresa el nombre: ")
+        print(buscar_estudiante(lista,nombre,dato="nombre"))
+    elif opc_buscar =="3":
+        edad=input("Ingresa la edad: ")
+        print(buscar_estudiante(lista,edad,dato="edad"))
         
+        
+            
+
     
 #Agregar estudiante
 def create_students(lista:list,id:str,nombre:str,edad:str):
@@ -60,13 +87,8 @@ def recopilador_id():
     ides=[]
     for i in lista: # for que recorre la lista de diccionarios
         ides.append(i["id"])  # agregar el id a la lista ides
-    if id_estudiante not in ides: # verificar si el id se encuentre
-        return ("ese estudiante no se encuentra registrado")
-    else: # en caso de que se encuentre
-        posicion= ides.index(id_estudiante) # se determina la posicion del id del estudiante
-        lista.pop(posicion) # y se elimina esa posicion de la lista de diccionarios
-        return lista #retornar lista con el diccionario ya eliminado
     return ides # retornar lista de ides
+        
 
 def eliminar(): # funcion eliminar que recibe como parametro el id del estudiante
     while True: # control de excepciones para el id
@@ -80,7 +102,6 @@ def eliminar(): # funcion eliminar que recibe como parametro el id del estudiant
     lista.pop(posicion) # y se elimina esa posicion de la lista de diccionarios
     print("Nueva lista\n")
     return lista #retornar lista con el diccionario ya eliminado
-  
 #Buscar estudiantes
 def buscar_estudiante(estudiantes:list,id:str = None,nombre:str = None,edad:str = None,dato:str = "id"):
     """
@@ -114,6 +135,7 @@ def buscar_estudiante(estudiantes:list,id:str = None,nombre:str = None,edad:str 
             return "Error: no hay estudiantes que coincidan"
     elif contador_estudiantes > 1: #Si hay mas de un estudiante que coincida 
         return lista_estudiantes
+    
     return lista_estudiantes[0]
  
 def menu(): # funcion menu, que se encarga de llamar las respectivas funcionees
@@ -124,6 +146,10 @@ def menu(): # funcion menu, que se encarga de llamar las respectivas funcionees
     elif opcion =="2":
         print(eliminar())
         menu()
+    elif opcion =="4":
+        opciones_buscar()
+        menu()
+        
 menu()
         
 
