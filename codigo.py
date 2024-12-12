@@ -1,5 +1,4 @@
 
-
 print("Calculadora")
 
 #solicitar numeros
@@ -49,5 +48,5 @@ def menu():
     except Exception as e:
         print("Error inesperado: ", e)
         menu()
-
+menu()
 
