@@ -1,26 +1,29 @@
-lista=[
-    {
-    "id":"131313",
-    "nombre":"junior",
-    "edad":"13"
-        
-    },
-    {
-    "id":"1212",
-    "nombre":"pepe",
-    "edad":"13"
-        
-    },
-    {
-    "id":"1313",
-    "nombre":"lucas",
-    "edad":"13"
-        
+#Agregar estudiante
+def create_students(lista:list,id:str,nombre:str,edad:str):
+    """
+    Agrega un estudiante a la lista de estudiantes.
+
+    Args:
+        lista (list): La lista donde se añadirá el estudiante. 
+                      Se espera que contenga diccionarios con información de estudiantes.
+        id (str): Identificador único del estudiante.
+        nombre (str): Nombre del estudiante.
+        edad (str): Edad del estudiante.
+
+    Returns:
+        None: Esta función no retorna un valor, solo modifica la lista proporcionada.
+    """
+    student = {
+        "id":id,
+        "nombre":nombre,
+        "edad":edad
     }
-    
-]
+    lista.append(student)
+    return lista
+
 
 def eliminar(id_estudiante): # funcion eliminar que recibe como parametro el id del estudiante
+    lista= create_students
     ides=[] # lista donde se almacenaran todos los ides
     for i in lista: # for que recorre la lista de diccionarios
         ides.append(i["id"])  # agregar el id a la lista ides
