@@ -1,3 +1,14 @@
+
+def exeption_operation(funct):
+    def wraper_operation(*args,**kwargs):
+        try:
+            funct(*args,**kwargs)
+        except ValueError: 
+            return "Error los datos deben ser numeros"
+        except Exception as e:
+            return "Error inesperado: ",e
+    return wraper_operation
+
 print("Calculadora")
 
 #solicitar numeros
@@ -22,13 +33,28 @@ def menu():
         print(restar(n1,n2))
     elif o == "2":
         print(multiplicar(n1,n2))
-
+    elif o = "1":
+        print(suma(n1,n2))
+    elif o = "4":
+        print(division(n1,n2)
+             
+   
+@exeption_operation
 #funcion multiplicar
 def multiplicar(n1,n2):
     return n1 * n2
-
+@exeption_operation
 # funcion restar
 def restar(n1,n2):
     return n1-n2
+@exeption_operation
+#funcion suma
+def suma(n1,n2):
+    return a + b
+@exeption_operation
+#funcion division
+def division(n1,n2):
+    return a / b
 menu()
+
 
