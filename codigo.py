@@ -11,6 +11,7 @@ def solicitar_numeros():
         numeros.append(numero)
     return numeros
 
+
 #funcion multiplicar
 def multiplicar(n1,n2):
     print(n1 * n2) 
@@ -48,7 +49,5 @@ def menu():
     except Exception as e:
         print("Error inesperado: ", e)
         menu()
-
-menu()
 
 
