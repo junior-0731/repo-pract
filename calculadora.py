@@ -1,5 +1,5 @@
 
-print("Calculadora")
+print("Calculadora CJE- TEC")
 
 #solicitar numeros
 def solicitar_numeros():
